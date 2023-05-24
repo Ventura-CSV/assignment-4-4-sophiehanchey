@@ -10,29 +10,15 @@ def test_main_1():
     datastr = '10\n45\n50\n35\n25'
     sys.stdin = io.StringIO(datastr)
 
-    main.main()
+    numbers, maxval, minval = main.main()
     sys.stdout = sys.__stdout__
     print('Captured ', captureOut.getvalue())
     lines = captureOut.getvalue().split('\n')
     print(lines)
 
-    regex_string = r'[\w,\W]*10'
-    regex_string = r'[\w,\W]*45'
-    regex_string = r'[\w,\W]*50'
-    regex_string = r'[\w,\W]*35'
-    regex_string = r'[\w,\W]*25'
-    regex_string += r'[\w,\W]*'
-    print(regex_string)
-    res = re.search(regex_string, lines[0])
-    assert res != None
-    print(res.group())
-    regex_string = r'[\w,\W]*50'
-    regex_string = r'[\w,\W]*10'
-    regex_string += r'[\w,\W]*'
-    print(regex_string)
-    res = re.search(regex_string, lines[1])
-    assert res != None
-    print(res.group())
+    assert numbers == [10, 45, 50, 35, 25]
+    assert maxval == 50
+    assert minval == 10
 
 
 def test_main_2():
@@ -41,26 +27,12 @@ def test_main_2():
     datastr = '-10\n33\n55\n20\n-5'
     sys.stdin = io.StringIO(datastr)
 
-    main.main()
+    numbers, maxval, minval = main.main()
     sys.stdout = sys.__stdout__
     print('Captured ', captureOut.getvalue())
     lines = captureOut.getvalue().split('\n')
     print(lines)
 
-    regex_string = r'[\w,\W]*-10'
-    regex_string += r'[\w,\W]*33'
-    regex_string += r'[\w,\W]*55'
-    regex_string += r'[\w,\W]*20'
-    regex_string += r'[\w,\W]*-5'
-    regex_string += r'[\w,\W]*'
-    print(regex_string)
-    res = re.search(regex_string, lines[0])
-    assert res != None
-    print(res.group())
-    regex_string = r'[\w,\W]*55'
-    regex_string += r'[\w,\W]*-10'
-    regex_string += r'[\w,\W]*'
-    print(regex_string)
-    res = re.search(regex_string, lines[1])
-    assert res != None
-    print(res.group())
+    assert numbers == [-10, 33, 55, 20, -5], 'list values are not valid'
+    assert maxval == 55, 'max 55'
+    assert minval == -10, 'min -10'
