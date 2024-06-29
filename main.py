@@ -7,22 +7,19 @@ def main():
         numbers.append(int(input('Please enter an integer: ')))
         
     # find min
-    for i in numbers:
-        for j in numbers:
-            if numbers[i] < numbers[j]:
-                minval = numbers[i]
-                print(minval)
+    minval = numbers[0]
+    for i in numbers[1:]:
+        if numbers[i] < minval:
+            minval = numbers[i]
     
     # find max          
-    for i in numbers:
-        for j in numbers:
-            if numbers[i] > numbers[j]:
-                maxval = numbers[i]
-                print(maxval)
-        
+    maxval = numbers[0]
+    for i in numbers[1:]:
+        if numbers[i] > maxval:
+            maxval = numbers[i] 
 
     print(*numbers)
-    # print(maxval, minval)
+    print(maxval, minval)
     ########################################
     # Do not delete the return statement
     ########################################
