@@ -9,14 +9,14 @@ def main():
     # find min
     minval = numbers[0]
     for i in numbers[1:]:
-        if numbers[i] < minval:
-            minval = numbers[i]
+        if i < minval:
+            minval = i
     
     # find max          
     maxval = numbers[0]
     for i in numbers[1:]:
-        if numbers[i] > maxval:
-            maxval = numbers[i] 
+        if i > maxval:
+            maxval = i
 
     print(*numbers)
     print(maxval, minval)
